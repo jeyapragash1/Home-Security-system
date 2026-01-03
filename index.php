@@ -79,7 +79,7 @@
 
                 </div>
                 <div class="int" data-aos="fade-up">
-                    <img src="images/f3.jpg" alt="Emergency Contact" style="">
+                    <img src="images/f3.jpg" alt="Emergency Contact">
                     <div class="layer">
                         <h3>Report Issue</h3>
                         <p style="padding: 5px">Generate a report and quickly reach out to authorities with a single click.</p>

@@ -2,10 +2,20 @@
 <?php
 require_once './classes/Visitor.php';
 require_once 'classes/DbConnector.php';
-?>
+require_once 'config/Security.php';
+require_once 'config/Logger.php';
 
+Security::configureSession();
 
-<?php
+// Check authentication
+if (!isset($_SESSION['email'])) {
+    header("location:login.php");
+    exit();
+}
+
+$name = $_SESSION['name'] ?? 'User';
+$userId = $_SESSION['user_id'] ?? 0;
+
 $dbcon = new DbConnector();
 $con = $dbcon->getConnection();
 
@@ -13,7 +23,7 @@ $con = $dbcon->getConnection();
 $checkedInCount = Visitor::getCheckedInCount($con);
 $checkedOutCount = Visitor::getCheckedOutCount($con);
 $reportedCount = Visitor::getReportedCount($con);
-$totalVisitorsCount = Visitor::getTotalVisitorsCount($con);
+$totalVisitorsCount = Visitor::getTotalVisitorsCountMonthly($con);
 ?>
 
 <html lang="en">
@@ -22,7 +32,7 @@ $totalVisitorsCount = Visitor::getTotalVisitorsCount($con);
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Security Dashboard</title>
+        <title>Home Security Dashboard - Sentinel Safe</title>
         <!-- ======= Styles ====== -->
 
         <link href="css/dashboard.css" rel="stylesheet" type="text/css"/>
@@ -39,18 +49,6 @@ $totalVisitorsCount = Visitor::getTotalVisitorsCount($con);
     </head>
 
 
-    <?php
-    session_start();
-
-    if (isset($_SESSION['email'])) {
-        $name = $_SESSION['name'];
-    } elseif (isset($_COOKIE['u_name'])) {
-        $name = $_COOKIE['name'];
-    } else {
-        header("location:login.php");
-        exit();
-    }
-    ?>
 
     <body>
         <!-- =============== Navigation ================ -->

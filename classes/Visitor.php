@@ -137,12 +137,16 @@ class Visitor {
             $stmt->bindParam(5, $action_taken);
             $stmt->bindParam(6, $id);
             $result = $stmt->execute();
+            
             if (!$result) {
-                error_log("Database error in editVisitor: " . implode(", ", $stmt->errorInfo()));
+                Logger::error("Database error in editVisitor", ['error' => $stmt->errorInfo()]);
+            } else {
+                Logger::info("Visitor updated successfully", ['visitor_id' => $id]);
             }
+            
             return $result;
         } catch (PDOException $ex) {
-            error_log("Database error in editVisitor: " . $ex->getMessage());
+            Logger::error("Database error in editVisitor: " . $ex->getMessage());
             return false;
         }
     }
@@ -152,9 +156,15 @@ class Visitor {
             $query = "DELETE FROM visitors WHERE visitorId = ?";
             $stmt = $con->prepare($query);
             $stmt->bindParam(1, $visitorId);
-            return $stmt->execute();
+            $result = $stmt->execute();
+            
+            if ($result) {
+                Logger::info("Visitor deleted successfully", ['visitor_id' => $visitorId]);
+            }
+            
+            return $result;
         } catch (PDOException $ex) {
-            error_log("Database error in deleteVisitor: " . $ex->getMessage());
+            Logger::error("Database error in deleteVisitor: " . $ex->getMessage());
             return false;
         }
     }
@@ -167,7 +177,7 @@ class Visitor {
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
-            error_log("Database error: " . $ex->getMessage());
+            Logger::error("Database error in getVisitorById: " . $ex->getMessage());
             return false;
         }
     }
@@ -184,7 +194,7 @@ class Visitor {
         return self::getCountByActionTaken($con, 'reported');
     }
 
-    public static function getTotalVisitorsCount($con) {
+    public static function getTotalVisitorsCountMonthly($con) {
         try {
             $query = "SELECT COUNT(*) as count FROM visitors WHERE MONTH(date) = MONTH(CURRENT_DATE()) AND YEAR(date) = YEAR(CURRENT_DATE())";
             $stmt = $con->prepare($query);
@@ -192,8 +202,8 @@ class Visitor {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result['count'];
         } catch (PDOException $ex) {
-            error_log("Database error: " . $ex->getMessage());
-            return false;
+            Logger::error("Database error in getTotalVisitorsCountMonthly: " . $ex->getMessage());
+            return 0;
         }
     }
 
@@ -206,8 +216,8 @@ class Visitor {
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result['count'];
         } catch (PDOException $ex) {
-            error_log("Database error: " . $ex->getMessage());
-            return false;
+            Logger::error("Database error in getCountByActionTaken: " . $ex->getMessage());
+            return 0;
         }
     }
 
@@ -219,8 +229,23 @@ class Visitor {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
-            error_log("Database error: " . $ex->getMessage());
-            return false;
+            Logger::error("Database error in getRecentVisitors: " . $ex->getMessage());
+            return [];
+        }
+    }
+    
+    public static function searchVisitors($con, $searchTerm) {
+        try {
+            $query = "SELECT * FROM visitors WHERE name LIKE ? OR reason LIKE ? ORDER BY date DESC, time DESC";
+            $stmt = $con->prepare($query);
+            $searchPattern = "%{$searchTerm}%";
+            $stmt->bindParam(1, $searchPattern);
+            $stmt->bindParam(2, $searchPattern);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            Logger::error("Database error in searchVisitors: " . $ex->getMessage());
+            return [];
         }
     }
 
