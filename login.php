@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <?php
 require './classes/DbConnector.php';
-session_start();
+require './config/Security.php';
+
+Security::configureSession();
 
 if(isset($_SESSION['email'])){
     header("location:dashboard.php");
     exit();
-}else{
+}
 ?>
 
 <html lang="en">
@@ -14,7 +16,7 @@ if(isset($_SESSION['email'])){
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Login</title>
+        <title>Login - Sentinel Safe</title>
         <link rel="stylesheet" href="css/login.css" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
               integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
@@ -39,38 +41,47 @@ if(isset($_SESSION['email'])){
                         <p class="text-secondary">Welcome back! Log in to Home Security System.</p>
                     </div>
 
-                    <!--form-->
-                   
+                    <?php
+                    // Display success message
+                    if (isset($_SESSION['success_message'])) {
+                        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
+                        echo Security::escape($_SESSION['success_message']);
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>';
+                        unset($_SESSION['success_message']);
+                    }
+                    
+                    // Display error message
+                    if (isset($_SESSION['error_message'])) {
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+                        echo Security::escape($_SESSION['error_message']);
+                        echo '<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>';
+                        unset($_SESSION['error_message']);
+                    }
+                    ?>
 
+                    <!--form-->
                     <form action="loginProcess.php" method="POST">
+                        <?php echo Security::csrfField(); ?>
+                        
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" required>
+                            <input type="email" class="form-control" id="email" name="email" required autocomplete="email">
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" required>
+                            <input type="password" class="form-control" id="password" name="password" required autocomplete="current-password">
                         </div>
                         <div class="form-check mb-3 d-flex justify-content-center">
-                            <input class="form-check-input me-2" type="checkbox" name="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input me-2" type="checkbox" name="checkbox" value="1" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
-                                Remember Me
+                                Remember Me (30 days)
                             </label>
                         </div>
                         <button type="submit" class="btn btn-primary btn-lg w-100 mb-3"> Log In</button>
                     </form>
 
                     <div class="text-center">
-                        <small>Already have an account? <a href="sign_up.php" class="fw-bold" style="text-decoration: none;">Sign Up</a></small>
-                    </div>
-                     <?php
-                    if (isset($_GET['error']) && $_GET['error'] == 'invalid_credentials') {
-                        echo '<div class="alert alert-danger" role="alert">Invalid email or password. Please try again.</div>';
-                    }
-                    ?>
-
-                    <div>
-                        
+                        <small>Don't have an account? <a href="sign_up.php" class="fw-bold" style="text-decoration: none;">Sign Up</a></small>
                     </div>
                 </div>
             </div>
@@ -82,7 +93,3 @@ if(isset($_SESSION['email'])){
     </body>
 
 </html>
-
-<?php
-}
-?>
