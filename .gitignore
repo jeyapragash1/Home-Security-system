@@ -1,0 +1,52 @@
+# Environment files
+.env
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+error_log
+access_log
+
+# Temporary files
+tmp/
+temp/
+cache/
+
+# User uploads
+uploads/
+!uploads/.gitkeep
+
+# Composer
+vendor/
+composer.lock
+
+# Node modules (if using npm)
+node_modules/
+package-lock.json
+
+# Build files
+dist/
+build/
+
+# Database backups
+*.sql.gz
+*.sql.zip
+backups/
+
+# Session files
+sessions/
+
+# NetBeans project
+nbproject/private/
