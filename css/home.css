@@ -222,8 +222,411 @@
     }
 }
 
-	
-	
-	
+/*------------ Statistics Section -----------*/
+.stats-section {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
 
-	
+.stats-section h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.stats-section .row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.stat-box {
+    flex-basis: 22%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    margin: 1rem 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.stat-box i {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.stat-box h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0.5rem 0;
+}
+
+.stat-box p {
+    font-size: 1rem;
+    color: #f0f0f0;
+    font-weight: 400;
+}
+
+/*------------ How It Works -----------*/
+.how-it-works {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 4rem 0;
+    background: #f9f9f9;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.how-it-works h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.how-it-works .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    margin-top: -1rem;
+}
+
+.how-it-works .row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.step {
+    flex-basis: 30%;
+    background: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 1rem;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.step:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.step-number {
+    position: absolute;
+    top: -20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.step i {
+    font-size: 3rem;
+    color: #667eea;
+    margin: 1rem 0;
+}
+
+.step h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+    margin: 1rem 0;
+}
+
+.step p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/*------------ Why Choose Us -----------*/
+.why-choose {
+    width: 80%;
+    margin: auto;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.why-choose h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2rem;
+}
+
+.why-choose .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.why-left {
+    flex-basis: 45%;
+}
+
+.why-left img {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.why-right {
+    flex-basis: 50%;
+    text-align: left;
+}
+
+.why-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    background: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.why-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.why-item i {
+    font-size: 2.5rem;
+    color: #667eea;
+    margin-right: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.why-item h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.why-item p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/*------------ Testimonials -----------*/
+.testimonials {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.testimonials h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.testimonials .row {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.testimonial-box {
+    flex-basis: 30%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.testimonial-box:hover {
+    transform: scale(1.05);
+}
+
+.testimonial-box i {
+    font-size: 2rem;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.testimonial-box p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.user-info h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.user-info p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0.3rem 0;
+}
+
+.rating {
+    margin-top: 0.5rem;
+}
+
+.rating i {
+    font-size: 1rem;
+    color: #ffd700;
+    margin: 0 0.1rem;
+}
+
+/*------------ Call to Action -----------*/
+.cta-section {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.cta-section p {
+    font-size: 1.2rem;
+    color: #f0f0f0;
+    margin-bottom: 1rem;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #fff;
+    color: #f5576c;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+}
+
+.btn-secondary:hover {
+    background: #fff;
+    color: #f5576c;
+    transform: translateY(-5px);
+}
+
+/*------------ Responsive Design for New Sections -----------*/
+@media (max-width: 768px) {
+    .stats-section .row,
+    .how-it-works .row,
+    .testimonials .row {
+        flex-direction: column;
+    }
+    
+    .stat-box,
+    .step,
+    .testimonial-box {
+        flex-basis: 80%;
+        margin: 1rem auto;
+    }
+    
+    .why-choose .row {
+        flex-direction: column;
+    }
+    
+    .why-left,
+    .why-right {
+        flex-basis: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    .why-right {
+        text-align: center;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-section h2,
+    .how-it-works h2,
+    .why-choose h2,
+    .testimonials h2,
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+    
+    .stat-box,
+    .step,
+    .testimonial-box {
+        flex-basis: 90%;
+    }
+}

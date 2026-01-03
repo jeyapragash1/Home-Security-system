@@ -58,7 +58,34 @@
 </p>
         </section>
 
-        <!---------------- our features -------------->
+        <!-------------- Statistics Section ------------>
+        <section class="stats-section" data-aos="fade-up">
+            <h2>Trusted by Thousands</h2><br>
+            <div class="row">
+                <div class="stat-box" data-aos="zoom-in">
+                    <i class="fa fa-users"></i>
+                    <h3>5000+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-box" data-aos="zoom-in">
+                    <i class="fa fa-shield"></i>
+                    <h3>99.9%</h3>
+                    <p>Security Rate</p>
+                </div>
+                <div class="stat-box" data-aos="zoom-in">
+                    <i class="fa fa-clock-o"></i>
+                    <h3>24/7</h3>
+                    <p>Monitoring</p>
+                </div>
+                <div class="stat-box" data-aos="zoom-in">
+                    <i class="fa fa-check-circle"></i>
+                    <h3>10000+</h3>
+                    <p>Visitors Tracked</p>
+                </div>
+            </div>
+        </section>
+
+        <!---------------- our features ---------------->
         <section class="interest" data-aos="fade-up">
             <h2>Our Features</h2><br>
             <div class="row">
@@ -94,6 +121,134 @@
                     </div>
 
                 </div>
+            </div>
+        </section>
+
+        <!-------------- How It Works ------------>
+        <section class="how-it-works" data-aos="fade-up">
+            <h2>How It Works</h2><br>
+            <p class="subtitle">Get started with Sentinel Safe in 3 simple steps</p><br>
+            <div class="row">
+                <div class="step" data-aos="fade-right">
+                    <div class="step-number">1</div>
+                    <i class="fa fa-user-plus"></i>
+                    <h3>Sign Up</h3>
+                    <p>Create your account in less than 2 minutes. Provide basic information and set up your security profile.</p>
+                </div>
+                <div class="step" data-aos="fade-up">
+                    <div class="step-number">2</div>
+                    <i class="fa fa-cog"></i>
+                    <h3>Configure</h3>
+                    <p>Set up your preferences, add security personnel, and customize your monitoring settings.</p>
+                </div>
+                <div class="step" data-aos="fade-left">
+                    <div class="step-number">3</div>
+                    <i class="fa fa-check-circle-o"></i>
+                    <h3>Start Monitoring</h3>
+                    <p>Begin tracking visitors, receive alerts, and manage your home security with confidence.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-------------- Why Choose Us ------------>
+        <section class="why-choose" data-aos="fade-up">
+            <h2>Why Choose Sentinel Safe?</h2><br>
+            <div class="row">
+                <div class="why-left" data-aos="fade-right">
+                    <img src="images/security-team.jpg" alt="Security Team" onerror="this.src='images/logo.png'">
+                </div>
+                <div class="why-right" data-aos="fade-left">
+                    <div class="why-item">
+                        <i class="fa fa-lock"></i>
+                        <div>
+                            <h3>Advanced Security</h3>
+                            <p>State-of-the-art encryption and security protocols to protect your data and privacy.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <i class="fa fa-mobile"></i>
+                        <div>
+                            <h3>Easy to Use</h3>
+                            <p>Intuitive interface designed for everyone. No technical knowledge required.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <i class="fa fa-headphones"></i>
+                        <div>
+                            <h3>24/7 Support</h3>
+                            <p>Our dedicated team is always available to assist you with any questions or concerns.</p>
+                        </div>
+                    </div>
+                    <div class="why-item">
+                        <i class="fa fa-money"></i>
+                        <div>
+                            <h3>Affordable Pricing</h3>
+                            <p>Premium security features at competitive prices. No hidden fees or charges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------- Testimonials ------------>
+        <section class="testimonials" data-aos="fade-up">
+            <h2>What Our Users Say</h2><br>
+            <div class="row">
+                <div class="testimonial-box" data-aos="flip-left">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Sentinel Safe has completely transformed how we manage security at our residence. The visitor tracking system is incredibly efficient and easy to use.</p>
+                    <div class="user-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Homeowner</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-box" data-aos="flip-left">
+                    <i class="fa fa-quote-left"></i>
+                    <p>The real-time monitoring and instant alerts give me peace of mind. I always know who's entering and leaving my property. Highly recommended!</p>
+                    <div class="user-info">
+                        <h4>Michael Chen</h4>
+                        <p>Security Manager</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-box" data-aos="flip-left">
+                    <i class="fa fa-quote-left"></i>
+                    <p>Outstanding system with excellent customer support. The PDF reporting feature is particularly useful for keeping detailed visitor records.</p>
+                    <div class="user-info">
+                        <h4>Emily Rodriguez</h4>
+                        <p>Property Manager</p>
+                        <div class="rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-------------- Call to Action ------------>
+        <section class="cta-section" data-aos="zoom-in">
+            <h2>Ready to Secure Your Home?</h2>
+            <p>Join thousands of satisfied users and experience peace of mind with Sentinel Safe</p><br>
+            <div class="cta-buttons">
+                <a href="sign_up.php" class="btn-primary">Get Started Free</a>
+                <a href="#contact" class="btn-secondary">Contact Us</a>
             </div>
         </section>
 
