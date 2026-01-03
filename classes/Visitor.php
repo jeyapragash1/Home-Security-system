@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../config/Logger.php';
+
 class Visitor {
 
     private $visitorId;
@@ -26,8 +28,15 @@ class Visitor {
             $stmt->bindParam(3, $this->time);
             $stmt->bindParam(4, $this->reason);
             $stmt->bindParam(5, $this->action_taken);
-            return $stmt->execute();
+            $result = $stmt->execute();
+            
+            if (!$result) {
+                Logger::error("Failed to insert visitor", ['error' => $stmt->errorInfo()]);
+            }
+            
+            return $result;
         } catch (PDOException $ex) {
+            Logger::error("Database error in addVisitor: " . $ex->getMessage());
             return false;
         }
     }
@@ -39,8 +48,81 @@ class Visitor {
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $ex) {
-            error_log("Database error: " . $ex->getMessage());
+            Logger::error("Database error in getAllVisitors: " . $ex->getMessage());
             return false;
+        }
+    }
+
+    public static function getVisitorsPaginated($con, $limit = 10, $offset = 0, $search = null, $filter = null) {
+        try {
+            $query = "SELECT * FROM visitors WHERE 1=1";
+            $params = [];
+            
+            // Add search condition
+            if ($search) {
+                $query .= " AND (name LIKE ? OR reason LIKE ?)";
+                $searchTerm = "%{$search}%";
+                $params[] = $searchTerm;
+                $params[] = $searchTerm;
+            }
+            
+            // Add filter condition
+            if ($filter && in_array($filter, ['checked_in', 'checked_out', 'reported'])) {
+                $query .= " AND action_taken = ?";
+                $params[] = $filter;
+            }
+            
+            $query .= " ORDER BY date DESC, time DESC LIMIT ? OFFSET ?";
+            $params[] = $limit;
+            $params[] = $offset;
+            
+            $stmt = $con->prepare($query);
+            
+            // Bind parameters
+            foreach ($params as $index => $value) {
+                $type = is_int($value) ? PDO::PARAM_INT : PDO::PARAM_STR;
+                $stmt->bindValue($index + 1, $value, $type);
+            }
+            
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $ex) {
+            Logger::error("Database error in getVisitorsPaginated: " . $ex->getMessage());
+            return false;
+        }
+    }
+
+    public static function getTotalVisitorsCount($con, $search = null, $filter = null) {
+        try {
+            $query = "SELECT COUNT(*) as count FROM visitors WHERE 1=1";
+            $params = [];
+            
+            // Add search condition
+            if ($search) {
+                $query .= " AND (name LIKE ? OR reason LIKE ?)";
+                $searchTerm = "%{$search}%";
+                $params[] = $searchTerm;
+                $params[] = $searchTerm;
+            }
+            
+            // Add filter condition
+            if ($filter && in_array($filter, ['checked_in', 'checked_out', 'reported'])) {
+                $query .= " AND action_taken = ?";
+                $params[] = $filter;
+            }
+            
+            $stmt = $con->prepare($query);
+            
+            foreach ($params as $index => $value) {
+                $stmt->bindValue($index + 1, $value);
+            }
+            
+            $stmt->execute();
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result['count'];
+        } catch (PDOException $ex) {
+            Logger::error("Database error in getTotalVisitorsCount: " . $ex->getMessage());
+            return 0;
         }
     }
 
